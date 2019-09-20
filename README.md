@@ -12,7 +12,9 @@
 - [get menus by father_id] /nav/find/where?father_id=1
 - [update menu by id] /nav/update
   - {"update":{"icon_address":"http://..."},"where":{"id":11}}
-- ## [update menu icon by id] /nav/:id/navPicture
+- [update menu icon by id] /nav/:id/navPicture
+
+3.
 
 # Steps
 

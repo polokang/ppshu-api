@@ -4,3 +4,5 @@ logs/
 env.json
 .vscode
 .uploads/
+.index.js
+.hello.js
