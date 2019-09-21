@@ -4,7 +4,20 @@
 
 1. CRUD a articles
 
-- [get an article]
+- [add article] /article/create
+
+  - {
+    "entity": {
+    "author_id": 1,
+    "post_date": "2000-09-18 10:00:00",
+    "title": "文章标题",
+    "content": "文章内容",
+    "status": "publish",
+    "category": "交易平台"
+    }
+    }
+
+- [get all article] /article
 
 2. CRUD the menus [https://www.myopal.xin/weapp]
 

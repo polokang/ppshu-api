@@ -5,5 +5,8 @@ module.exports = {
   },
   AutoWritedNavModel(target) {
     target.model = require("../models/navModel")
+  },
+  AutoWritedArticleModel(target) {
+    target.model = require("../models/articleModel")
   }
 }
