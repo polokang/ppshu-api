@@ -11,7 +11,16 @@ async function getAll(req, res) {
   return formatResponse(res, { data: articles })
 }
 
+async function update(req, res) {
+  const { id } = req.params
+  const article = await articleService.baseUpdate(req.body["entity"], {
+    id: id
+  })
+  return formatResponse(res, { data: article })
+}
+
 module.exports = {
   create,
-  getAll
+  getAll,
+  update
 }

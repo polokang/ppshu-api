@@ -19,6 +19,18 @@
 
 - [get all article] /article
 
+- [update article by id] /:id/update
+- {
+  "entity": {
+  "author_id": 1,
+  "post_date": "2000-09-18 10:00:00",
+  "title": "更新文章标题",
+  "content": "文章内容更新",
+  "status": "publish",
+  "category": "交易平台"
+  }
+  }
+
 2. CRUD the menus [https://www.myopal.xin/weapp]
 
 - [get menus] /menu
