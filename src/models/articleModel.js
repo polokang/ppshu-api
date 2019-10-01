@@ -9,7 +9,10 @@ class articleModel extends BaseModel {
       title: { type: Sequelize.STRING },
       content: { type: Sequelize.STRING },
       status: { type: Sequelize.STRING },
-      category: { type: Sequelize.STRING }
+      category: { type: Sequelize.STRING },
+      tag: { type: Sequelize.STRING },
+      watchcnt: { type: Sequelize.INTEGER },
+      commentcnt: { type: Sequelize.INTEGER }
     })
     this.model = super.getModel()
     this.model.sync()
