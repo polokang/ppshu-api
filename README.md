@@ -18,6 +18,20 @@
     }
 
 - [get all article] /article
+- [get article list] /article/getarticlelist?curPage=2&limit=1
+
+  - curPage : from 0
+  - return : {
+    "id": 2,
+    "author_id": 2,
+    "title": "文章标题 2",
+    "category": "交易平台",
+    "tag": null,
+    "watchcnt": 0,
+    "commentcnt": 0,
+    "image_link": null,
+    "updatedAt": "2019-09-21T13:15:39.000Z"
+    }
 
 - [update article by id] /:id/update
 - {
