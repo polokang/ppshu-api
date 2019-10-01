@@ -12,10 +12,30 @@ class articleModel extends BaseModel {
       category: { type: Sequelize.STRING },
       tag: { type: Sequelize.STRING },
       watchcnt: { type: Sequelize.INTEGER },
-      commentcnt: { type: Sequelize.INTEGER }
+      commentcnt: { type: Sequelize.INTEGER },
+      image_link: { type: Sequelize.STRING }
     })
     this.model = super.getModel()
     this.model.sync()
+  }
+
+  getArticleByPageDAO(offset, limit) {
+    return this.model.findAll({
+      attributes: [
+        "id",
+        "author_id",
+        "title",
+        "category",
+        "tag",
+        "watchcnt",
+        "commentcnt",
+        "image_link",
+        "updatedAt"
+      ],
+      order: [["updatedAt", "DESC"]],
+      offset: offset,
+      limit: limit
+    })
   }
 }
 module.exports = new articleModel()

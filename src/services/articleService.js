@@ -6,5 +6,8 @@ class ArticleService extends BaseService {
   constructor() {
     super(ArticleService.model)
   }
+  getArticleByPageService(offset, limit) {
+    return ArticleService.model.getArticleByPageDAO(offset, limit)
+  }
 }
 module.exports = new ArticleService()

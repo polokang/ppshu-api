@@ -19,8 +19,18 @@ async function update(req, res) {
   return formatResponse(res, { data: article })
 }
 
+async function getarticlelist(req, res) {
+  const { curPage, limit } = req.query
+  const articles = await articleService.getArticleByPageService(
+    parseInt(curPage),
+    parseInt(limit)
+  )
+  return formatResponse(res, { data: articles })
+}
+
 module.exports = {
   create,
   getAll,
-  update
+  update,
+  getarticlelist
 }
