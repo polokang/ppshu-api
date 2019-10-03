@@ -26,15 +26,17 @@
 
   - curPage : from 0
   - return : {
-    "id": 2,
-    "author_id": 2,
-    "title": "文章标题 2",
-    "category": "交易平台",
-    "tag": null,
+    {
+    "id": 9,
+    "author_id": 1,
+    "title": "禁令即将生效！数千游客涌向乌鲁鲁！争相攀爬岩石！",
+    "category": "澳洲新闻",
+    "tag": "AD",
     "watchcnt": 0,
     "commentcnt": 0,
-    "image_link": null,
-    "updatedAt": "2019-09-21T13:15:39.000Z"
+    "image_link": "https://brisbanebbs.com/data/attachment/forum/201910/02/171617lz3wz13s1aeozyli.jpg",
+    "updatedAt": "2019-10-03T01:50:34.000Z"
+    }
     }
 
 - [update article by id] /:id/update
@@ -48,6 +50,11 @@
   "category": "交易平台"
   }
   }
+
+- [getlist By Tag] /article/getarticlelist?curPage=2&limit=1&tag=AD
+
+  - tag:根据 tag 获取文章列表
+  - return : 同 getarticlelist 接口
 
 2. CRUD the menus [https://www.myopal.xin/weapp]
 

@@ -54,6 +54,7 @@ class articleModel extends BaseModel {
       ],
       order: [["updatedAt", "DESC"]],
       offset: offset,
+      limit: limit,
       where: { tag: tag, status: "publish" }
     })
   }
