@@ -7,7 +7,7 @@ class articleModel extends BaseModel {
       author_id: { type: Sequelize.INTEGER },
       post_date: { type: Sequelize.DATE },
       title: { type: Sequelize.STRING },
-      content: { type: Sequelize.STRING },
+      content: { type: Sequelize.TEXT },
       status: { type: Sequelize.STRING },
       category: { type: Sequelize.STRING },
       tag: { type: Sequelize.STRING },
@@ -34,7 +34,8 @@ class articleModel extends BaseModel {
       ],
       order: [["updatedAt", "DESC"]],
       offset: offset,
-      limit: limit
+      limit: limit,
+      where: { tag: { [Sequelize.Op.ne]: "AD" }, status: "publish" }
     })
   }
 }

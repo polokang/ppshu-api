@@ -6,6 +6,8 @@
 
 - [add article] /article/create
 
+  - tag:'AD' 表示是广告，需展示在幻灯片区域
+  - status: 'publish'
   - {
     "entity": {
     "author_id": 1,
@@ -13,7 +15,9 @@
     "title": "文章标题",
     "content": "文章内容",
     "status": "publish",
-    "category": "交易平台"
+    "category": "交易平台",
+    "status": "publish",
+    "tag":"交易平台"
     }
     }
 
