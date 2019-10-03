@@ -28,9 +28,20 @@ async function getarticlelist(req, res) {
   return formatResponse(res, { data: articles })
 }
 
+async function getlistByTag(req, res) {
+  const { tag, curPage, limit } = req.query
+  const articles = await articleService.getlistByTag(
+    tag,
+    parseInt(curPage),
+    parseInt(limit)
+  )
+  return formatResponse(res, { data: articles })
+}
+
 module.exports = {
   create,
   getAll,
   update,
-  getarticlelist
+  getarticlelist,
+  getlistByTag
 }

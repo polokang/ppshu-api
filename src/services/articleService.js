@@ -9,5 +9,8 @@ class ArticleService extends BaseService {
   getArticleByPageService(offset, limit) {
     return ArticleService.model.getArticleByPageDAO(offset, limit)
   }
+  getlistByTag(tag, offset, limit) {
+    return ArticleService.model.getListByTagDAO(tag, offset, limit)
+  }
 }
 module.exports = new ArticleService()

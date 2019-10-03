@@ -38,5 +38,24 @@ class articleModel extends BaseModel {
       where: { tag: { [Sequelize.Op.ne]: "AD" }, status: "publish" }
     })
   }
+
+  getListByTagDAO(tag, offset, limit) {
+    return this.model.findAll({
+      attributes: [
+        "id",
+        "author_id",
+        "title",
+        "category",
+        "tag",
+        "watchcnt",
+        "commentcnt",
+        "image_link",
+        "updatedAt"
+      ],
+      order: [["updatedAt", "DESC"]],
+      offset: offset,
+      where: { tag: tag, status: "publish" }
+    })
+  }
 }
 module.exports = new articleModel()
