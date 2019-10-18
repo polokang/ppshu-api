@@ -1,5 +1,7 @@
 const multer = require("multer")
 let OSS = require("ali-oss")
+const moment = require("moment")
+const { formatResponse } = require("./helper")
 
 let client = new OSS({
   region: "oss-ap-southeast-2", //阿里云对象存储地域名
@@ -28,15 +30,6 @@ let storage = multer.diskStorage({
   }
 })
 
-// async function uploadImage(filename) {
-//   try {
-//     let result = await client.put("test/" + filename, "uploads/" + filename)
-//     console.log(result) //在此处记录 url name 等信息
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
-
 // const uploadImage = (key, fieldName) => {
 //   return new Promise(function(resolve, reject) {
 //     setTimeout(function() {
@@ -53,6 +46,37 @@ const uploadImage = (key, fieldName) => {
     },
     fileFilter
   }).single(fieldName)
+}
+
+async function uploadImage2OSS(req, res) {
+  var fileType = req.file.mimetype
+  var lastName = ""
+  switch (fileType) {
+    case "image/png":
+      lastName = ".png"
+      break
+    case "image/jpeg":
+      lastName = ".jpg"
+      break
+    default:
+      lastName = ".png"
+      break
+  }
+  // 构建图片名
+  var fileName =
+    "wechat/" +
+    req.body.articleid +
+    "-" +
+    moment(Date.now()).format("MMDDHHmmss") +
+    lastName
+
+  try {
+    let result = await client.put(fileName, req.file.path)
+    return formatResponse(res, { ossurl: result.url })
+  } catch (err) {
+    console.log(err)
+    return formatResponse(res, err)
+  }
 }
 
 // const deleteImage = key =>
@@ -72,7 +96,8 @@ const uploadImage = (key, fieldName) => {
 
 module.exports = {
   client,
-  uploadImage
+  uploadImage,
+  uploadImage2OSS
   // deleteImage,
   // checkResourceExist
 }
