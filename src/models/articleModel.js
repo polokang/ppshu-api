@@ -4,6 +4,7 @@ import BaseModel from "./baseModel"
 class articleModel extends BaseModel {
   constructor() {
     super("article", {
+      article_id: { type: Sequelize.STRING },
       author_id: { type: Sequelize.INTEGER },
       post_date: { type: Sequelize.DATE },
       title: { type: Sequelize.STRING },
@@ -17,6 +18,24 @@ class articleModel extends BaseModel {
     })
     this.model = super.getModel()
     this.model.sync()
+  }
+
+  getArticleByIDDAO(articleID) {
+    return this.model.findAll({
+      attributes: [
+        "id",
+        "article_id",
+        "author_id",
+        "title",
+        "category",
+        "tag",
+        "watchcnt",
+        "commentcnt",
+        "image_link",
+        "updatedAt"
+      ],
+      where: { article_id: articleID }
+    })
   }
 
   getArticleByPageDAO(offset, limit) {

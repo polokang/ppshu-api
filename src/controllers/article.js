@@ -3,6 +3,7 @@ const { formatResponse } = require("../utils/helper")
 
 async function create(req, res) {
   const article = await articleService.baseCreate(req.body["entity"])
+
   return formatResponse(res, { data: article })
 }
 

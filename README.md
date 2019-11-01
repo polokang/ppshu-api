@@ -17,12 +17,18 @@
     "status": "publish",
     "category": "交易平台",
     "status": "publish",
-    "tag":"交易平台"
-    }
+    "tag":"交易平台",
+    },
+    "images":[]
     }
 
-- [get all article] /article
-- [get article list] /article/getarticlelist?curPage=2&limit=1
+  - 图片上传：
+
+    - 数据库中 image_link 字段可存储多张图片，用 `,` 分割，目前一条新闻可上传 9 张图片
+    - 第一张图片为列表展示图片
+
+* [get all article] /article
+* [get article list] /article/getarticlelist?curPage=2&limit=1
 
   - curPage : from 0
   - return : {
@@ -39,8 +45,8 @@
     }
     }
 
-- [update article by id] /:id/update
-- {
+* [update article by id] /:id/update
+* {
   "entity": {
   "author_id": 1,
   "post_date": "2000-09-18 10:00:00",
@@ -51,7 +57,7 @@
   }
   }
 
-- [getlist By Tag] /article/getarticlelist?curPage=2&limit=1&tag=AD
+* [getlist By Tag] /article/getarticlelist?curPage=2&limit=1&tag=AD
 
   - tag:根据 tag 获取文章列表
   - return : 同 getarticlelist 接口
