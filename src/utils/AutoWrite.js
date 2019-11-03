@@ -8,5 +8,8 @@ module.exports = {
   },
   AutoWritedArticleModel(target) {
     target.model = require("../models/articleModel")
+  },
+  AutoWritedAdvModel(target) {
+    target.model = require("../models/advModel")
   }
 }
