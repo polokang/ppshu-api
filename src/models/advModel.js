@@ -8,14 +8,14 @@ class advModel extends BaseModel {
       author_id: { type: Sequelize.INTEGER },
       title: { type: Sequelize.STRING },
       content: { type: Sequelize.TEXT },
-      image_link: { type: Sequelize.STRING },
-      type: { type: Sequelize.STRING }, //[ image,slide,video ]
-      status: { type: Sequelize.STRING },
+      image_link: { type: Sequelize.STRING }, //数组，用 “,” 号分开
+      type: { type: Sequelize.STRING }, //[ slide,image, 菜单表中的类型 ]
+      status: { type: Sequelize.STRING }, // [publish, delay]
       start_time: { type: Sequelize.DATE },
       end_time: { type: Sequelize.DATE },
-      watchcnt: { type: Sequelize.INTEGER },
-      commentcnt: { type: Sequelize.INTEGER },
-      page_num: { type: Sequelize.INTEGER }, //0:首页，1：二级页面；2：详情页面
+      watchcnt: { type: Sequelize.INTEGER }, //阅读数
+      commentcnt: { type: Sequelize.INTEGER }, //评论出
+      page_num: { type: Sequelize.INTEGER }, //[0,1,2] 0:首页，1：二级页面；2：详情页面
       position_order: { type: Sequelize.INTEGER } //排序
     })
     this.model = super.getModel()
@@ -51,7 +51,6 @@ class advModel extends BaseModel {
         "id",
         "author_id",
         "title",
-        "content",
         "image_link",
         "type",
         "status",
@@ -63,8 +62,8 @@ class advModel extends BaseModel {
         "position_order",
         "updatedAt"
       ],
-      order: [["updatedAt", "DESC"]],
-      where: { page_num: pageNum, status: "publish" }
+      order: [["id", "DESC"]],
+      where: { page_num: pageNum }
     })
   }
 }
