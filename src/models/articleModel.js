@@ -77,5 +77,26 @@ class articleModel extends BaseModel {
       where: { tag: tag, status: "publish" }
     })
   }
+
+  //根据文章类型（中文）获取文章列表
+  getListByCTypeDAO(ctype, offset, limit) {
+    return this.model.findAll({
+      attributes: [
+        "id",
+        "author_id",
+        "title",
+        "category",
+        "tag",
+        "watchcnt",
+        "commentcnt",
+        "image_link",
+        "updatedAt"
+      ],
+      order: [["updatedAt", "DESC"]],
+      offset: offset,
+      limit: limit,
+      where: { category: ctype, status: "publish" }
+    })
+  }
 }
 module.exports = new articleModel()

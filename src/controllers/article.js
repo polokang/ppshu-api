@@ -39,10 +39,21 @@ async function getlistByTag(req, res) {
   return formatResponse(res, { data: articles })
 }
 
+async function getlistByCType(req, res) {
+  const { ctype, curPage, limit } = req.query
+  const articles = await articleService.getlistByCType(
+    ctype,
+    parseInt(curPage),
+    parseInt(limit)
+  )
+  return formatResponse(res, { data: articles })
+}
+
 module.exports = {
   create,
   getAll,
   update,
   getarticlelist,
-  getlistByTag
+  getlistByTag,
+  getlistByCType
 }

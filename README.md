@@ -4,7 +4,11 @@
 
 1. CRUD a articles
 
-- [add article] /article/create
+- [ 根据文章类型（中文）获取文章列表] <get> /article/getlistByCType?ctype=专栏作家&curPage=0&limit=10
+  - ctype 默认值：投资咨询
+  - limit 默认值：10
+
+* [add article] /article/create
 
   - tag:'AD' 表示是广告，需展示在幻灯片区域
   - status: 'publish'
@@ -27,8 +31,8 @@
     - 数据库中 image_link 字段可存储多张图片，用 `,` 分割，目前一条新闻可上传 9 张图片
     - 第一张图片为列表展示图片
 
-* [get all article] /article
-* [get article list] /article/getarticlelist?curPage=2&limit=1
+- [get all article] /article
+- [get article list] /article/getarticlelist?curPage=2&limit=1
 
   - curPage : from 0
   - return : {
@@ -45,8 +49,8 @@
     }
     }
 
-* [update article by id] /:id/update
-* {
+- [update article by id] /:id/update
+- {
   "entity": {
   "author_id": 1,
   "post_date": "2000-09-18 10:00:00",
@@ -57,7 +61,7 @@
   }
   }
 
-* [getlist By Tag] /article/getarticlelist?curPage=2&limit=1&tag=AD
+- [getlist By Tag] /article/getarticlelist?curPage=2&limit=1&tag=AD
 
   - tag:根据 tag 获取文章列表
   - return : 同 getarticlelist 接口
