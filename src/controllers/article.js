@@ -49,11 +49,25 @@ async function getlistByCType(req, res) {
   return formatResponse(res, { data: articles })
 }
 
+async function getarticleByID(req, res) {
+  const article = await articleService.baseFindByFilter(null, req.query)
+  return formatResponse(res, article)
+}
+
+async function addWatchByID(req, res) {
+  const { id } = req.params
+  const { num } = req.query
+  const watchNum = articleService.baseUpdate({ watchcnt: num }, { id: id })
+  return formatResponse(res, { watchNum: watchNum })
+}
+
 module.exports = {
   create,
   getAll,
   update,
   getarticlelist,
   getlistByTag,
-  getlistByCType
+  getlistByCType,
+  getarticleByID,
+  addWatchByID
 }

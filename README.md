@@ -74,7 +74,10 @@
   - {"update":{"icon_address":"http://..."},"where":{"id":11}}
 - [update menu icon by id] /nav/:id/navPicture
 
-3.
+3. 增加文章和广告阅读数 接口
+
+- weapp/article/:id/addWatch?num=21
+- weapp/adv/:id/addWatch?num=21
 
 # Steps
 
@@ -142,3 +145,20 @@
 6. pm2 下使用 babel
 
 - 修改 ecosystem.config.js 中的 `NODE_ENV: "production"` 后, run `pm2 start ecosystem.config.js --interpreter babel-node`
+
+- 首页
+
+  - 幻灯片（8 条可编辑）
+  - 内部通知
+  - 图片文字广告
+  - 十条列表广告
+
+- 二级页面
+
+  - 专业服务
+    - 求职招聘（编辑）
+    - 会计服务
+    - -美⻝
+
+- 详情页面
+  - 幻灯片（8 条可编辑）
