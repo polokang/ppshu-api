@@ -73,6 +73,17 @@
 - [update menu by id] /nav/update
   - {"update":{"icon_address":"http://..."},"where":{"id":11}}
 - [update menu icon by id] /nav/:id/navPicture
+- [post add menu] /nav/create
+  - {
+    "entity": {
+    "category": "电信网络",
+    "father_id":2,
+    "a_id":2,
+    "icon_address":"https://australia51.com/Attach/City/1202751A-394A-7FB8-011F-AC4C0FE6E305_thumbnail.jpg",
+    "createdAt":"2019-09-15 01:01:08",
+    "updatedAt":"2019-09-15 01:01:08"
+    }
+    }
 
 3. 增加文章和广告阅读数 接口
 
