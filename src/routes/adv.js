@@ -1,14 +1,10 @@
 const router = require("express").Router()
 
-const {
-  getAdvsByPage,
-  getAdvByID,
-  addWatchByID
-} = require("../controllers/advCtrl")
+const { getAdvsByPage, getAdvByID, addCnt } = require("../controllers/advCtrl")
 
 router.get("/advs/:pageNum", getAdvsByPage)
 router.get("/find/where", getAdvByID)
-router.put("/:id/addWatch", addWatchByID) //增加阅读数
+router.put("/:id/addCnt", addCnt) //根据field 增加广告对应field值加1
 // router.get("/getlistByTag", getlistByTag)
 // router.get("/getarticlelist", getarticlelist)
 // router.post("/create", create)

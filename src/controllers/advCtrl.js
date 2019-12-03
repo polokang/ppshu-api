@@ -12,15 +12,22 @@ async function getAdvByID(req, res) {
   return formatResponse(res, adv)
 }
 
-async function addWatchByID(req, res) {
+async function addCnt(req, res) {
   const { id } = req.params
-  const { num } = req.query
-  const watchNum = advService.baseUpdate({ watchcnt: num }, { id: id })
-  return formatResponse(res, { watchNum: watchNum })
+  const { field } = req.body["data"]
+  const article = await advService.baseFindByFilter(null, { id: id })
+  let num = article[0].dataValues[field] + 1
+  advService.baseUpdate(
+    { [field]: num },
+    {
+      id: id
+    }
+  )
+  return formatResponse(res, article)
 }
 
 module.exports = {
   getAdvsByPage,
   getAdvByID,
-  addWatchByID
+  addCnt
 }

@@ -8,7 +8,7 @@ const {
   getlistByTag,
   getlistByCType,
   getarticleByID,
-  addWatchByID
+  addCnt
 } = require("../controllers/article")
 
 router.get("/", getAll)
@@ -20,6 +20,6 @@ router.get("/find/where", getarticleByID)
 router.post("/create", create)
 router.put("/:id/update", update)
 
-router.put("/:id/addWatch", addWatchByID) //增加阅读数
+router.put("/:id/addCnt", addCnt) //根据field 增加文章对应field值加1
 
 module.exports = router

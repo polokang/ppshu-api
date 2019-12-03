@@ -14,7 +14,10 @@ class articleModel extends BaseModel {
       tag: { type: Sequelize.STRING },
       watchcnt: { type: Sequelize.INTEGER },
       commentcnt: { type: Sequelize.INTEGER },
-      image_link: { type: Sequelize.STRING }
+      image_link: { type: Sequelize.STRING },
+      likecnt: { type: Sequelize.INTEGER },
+      unlikecnt: { type: Sequelize.INTEGER },
+      cert: { type: Sequelize.TINYINT }
     })
     this.model = super.getModel()
     this.model.sync()

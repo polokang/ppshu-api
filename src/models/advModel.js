@@ -16,7 +16,10 @@ class advModel extends BaseModel {
       watchcnt: { type: Sequelize.INTEGER }, //阅读数
       commentcnt: { type: Sequelize.INTEGER }, //评论出
       page_num: { type: Sequelize.INTEGER }, //[0,1,2] 0:首页，1：二级页面；2：详情页面
-      position_order: { type: Sequelize.INTEGER } //排序
+      position_order: { type: Sequelize.INTEGER }, //排序
+      likecnt: { type: Sequelize.INTEGER },
+      unlikecnt: { type: Sequelize.INTEGER },
+      cert: { type: Sequelize.TINYINT }
     })
     this.model = super.getModel()
     this.model.sync()
