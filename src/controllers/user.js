@@ -1,33 +1,69 @@
 const userService = require("../services/userService")
 const { formatResponse } = require("../utils/helper")
 const { generateToken } = require("../utils/jwt")
-
-// async function addUser(req, res) {
-//   const { email, password, name } = req.body.user
-//   const existingUser = await userService.getOneByField({ email })
-//   if (existingUser) {
-//     return formatResponse(res, "Email already exists", 400)
-//   }
-
-//   const user = await userService.createOne({
-//     email,
-//     password,
-//     name
-//   })
-//   const token = generateToken(user._id)
-//   return formatResponse(res, { email, name, token }, 201)
-// }
+const bcrypt = require("bcryptjs")
 
 async function addUser(req, res) {
-  // const { nickname } = req.body.user
-  // const existingUser = await userService.getOneByField({ nickname })
-  // if (existingUser) {
-  //   return formatResponse(res, "nickname already exists", 400)
-  // }
-  const user = await userService.baseCreate(req.body.user)
-  const token = generateToken(user._id)
+  const { open_id, uType } = req.body.user
+  const token = generateToken(open_id)
+  let user = null
+  let userObj = req.body.user
+  const existingUser = await userService.baseFindByFilter(null, {
+    open_id: open_id
+  })
+
+  if (existingUser.length > 0) {
+    let now = Date.now()
+    userObj["updatedAt"] = now
+    user = await userService.baseUpdate(req.body["user"], {
+      open_id: open_id
+    })
+    user = existingUser[0]
+    return formatResponse(res, { user, token }, 201)
+  } else {
+    let pwd = ""
+    if (uType === "web") {
+      pwd = await bcrypt.hash(req.body.user.password, 10)
+      userObj["password"] = pwd
+    }
+    user = await userService.baseCreate(userObj)
+  }
+
   return formatResponse(res, { user, token }, 201)
 }
+
+async function login(req, res) {
+  const { email, password } = req.body.user
+  const existingUser = await userService.baseFindByFilter(null, {
+    email: email
+  })
+
+  if (existingUser.length > 0) {
+    const validPassword = await bcrypt.compare(
+      password,
+      existingUser[0].password
+    )
+    if (!validPassword) {
+      return formatResponse(res, "Invalid email or password.", 400)
+    } else {
+      const token = generateToken(existingUser[0].open_id)
+      return formatResponse(res, { user: existingUser, token })
+    }
+  } else {
+    return formatResponse(res, "User is not exist.", 400)
+  }
+}
+
+async function update(req, res) {
+  const { id } = req.params
+  const userInfo = await userService.baseUpdate(req.body["user"], {
+    id: id
+  })
+  return formatResponse(res, { data: userInfo })
+}
+
 module.exports = {
-  addUser
+  addUser,
+  login,
+  update
 }

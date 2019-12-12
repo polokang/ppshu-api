@@ -87,8 +87,18 @@
 
 3. 增加文章和广告阅读数 接口
 
-- weapp/article/:id/addWatch?num=21
-- weapp/adv/:id/addWatch?num=21
+- weapp/article/:id/addCnt
+  - {
+    "data": {
+    "field": "likecnt"
+    }
+    }
+- weapp/adv/:id/addCnt
+  - {
+    "data": {
+    "field": "likecnt"
+    }
+    }
 
 # Steps
 
@@ -108,7 +118,7 @@
 
 ### 2. Install developer tools for fast develop
 
-- `npm i express nodemon envdotjson helmet morgan cors winston winston-daily-rotate-file mariadb joi express-async-errors swagger-ui-express yamljs bcrypt jsonwebtoken babel-plugin-transform-decorators-legacy babel-polyfill babel-register sequelize ali-oss multer`
+- `npm i express nodemon envdotjson helmet morgan cors winston winston-daily-rotate-file mariadb joi express-async-errors swagger-ui-express yamljs bcryptjs jsonwebtoken babel-plugin-transform-decorators-legacy babel-polyfill babel-register sequelize ali-oss multer`
 
 ## Run
 
@@ -156,6 +166,8 @@
 6. pm2 下使用 babel
 
 - 修改 ecosystem.config.js 中的 `NODE_ENV: "production"` 后, run `pm2 start ecosystem.config.js --interpreter babel-node`
+
+7. 由于 bcrypt 目前(2019)不支持 Linux ， 所以将 bcrypt 替换成 bcryptjs
 
 - 首页
 

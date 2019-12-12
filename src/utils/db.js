@@ -14,7 +14,8 @@ const sequelize = new Sequelize(connectionString, {
     max: 5,
     min: 0,
     idle: 30000
-  }
+  },
+  timezone: "+10:00"
 })
 
 sequelize
