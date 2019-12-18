@@ -11,5 +11,8 @@ module.exports = {
   },
   AutoWritedAdvModel(target) {
     target.model = require("../models/advModel")
+  },
+  AutoWritedMessageModel(target) {
+    target.model = require("../models/messageModel")
   }
 }

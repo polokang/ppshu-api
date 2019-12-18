@@ -6,6 +6,7 @@ const authRoute = require("./routes/auth")
 const navRoute = require("./routes/nav")
 const articleRoute = require("./routes/article")
 const advRoute = require("./routes/adv")
+const messageRoute = require("./routes/message")
 
 const router = express.Router()
 
@@ -23,5 +24,6 @@ router.use("/nav", navRoute)
 router.use("/article", articleRoute)
 router.use("/adv", advRoute)
 router.use("/uploadImage", singleMiddle, uploadImage2OSS)
+router.use("/message", messageRoute)
 
 module.exports = router

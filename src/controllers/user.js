@@ -55,15 +55,22 @@ async function login(req, res) {
 }
 
 async function update(req, res) {
-  const { id } = req.params
+  const { openid } = req.params
   const userInfo = await userService.baseUpdate(req.body["user"], {
-    id: id
+    open_id: openid
   })
   return formatResponse(res, { data: userInfo })
+}
+
+async function getUserByOpenid(req, res) {
+  const { openid } = req.params
+  const userInfo = await userService.baseFindByFilter(null, { open_id: openid })
+  return formatResponse(res, { user: userInfo })
 }
 
 module.exports = {
   addUser,
   login,
-  update
+  update,
+  getUserByOpenid
 }

@@ -5,7 +5,7 @@ import BaseModel from "./baseModel"
 class advModel extends BaseModel {
   constructor() {
     super("adv", {
-      author_id: { type: Sequelize.INTEGER },
+      author_id: { type: Sequelize.STRING },
       title: { type: Sequelize.STRING },
       content: { type: Sequelize.TEXT },
       image_link: { type: Sequelize.STRING }, //数组，用 “,” 号分开

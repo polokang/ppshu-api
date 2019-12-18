@@ -5,7 +5,7 @@ class articleModel extends BaseModel {
   constructor() {
     super("article", {
       article_id: { type: Sequelize.STRING },
-      author_id: { type: Sequelize.INTEGER },
+      author_id: { type: Sequelize.STRING },
       post_date: { type: Sequelize.DATE },
       title: { type: Sequelize.STRING },
       content: { type: Sequelize.TEXT },
