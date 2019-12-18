@@ -14,7 +14,7 @@ class articleModel extends BaseModel {
       tag: { type: Sequelize.STRING },
       watchcnt: { type: Sequelize.INTEGER },
       commentcnt: { type: Sequelize.INTEGER },
-      image_link: { type: Sequelize.STRING },
+      image_link: { type: Sequelize.TEXT },
       likecnt: { type: Sequelize.INTEGER },
       unlikecnt: { type: Sequelize.INTEGER },
       cert: { type: Sequelize.TINYINT }

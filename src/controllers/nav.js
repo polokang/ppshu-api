@@ -35,8 +35,13 @@ async function updateNavPic(req, res) {
 
 async function create(req, res) {
   const nav = await navService.baseCreate(req.body["entity"])
-
   return formatResponse(res, { data: nav })
+}
+
+async function getNavById(req, res) {
+  const { id } = req.params
+  const nav = await navService.baseFindByFilter(null, { id: id })
+  return formatResponse(res, nav)
 }
 
 module.exports = {
@@ -44,5 +49,6 @@ module.exports = {
   getNavsByFID,
   updateNavByID,
   updateNavPic,
-  create
+  create,
+  getNavById
 }
