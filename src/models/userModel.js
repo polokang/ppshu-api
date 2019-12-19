@@ -7,6 +7,7 @@ class UserModel extends BaseModel {
     super("user", {
       open_id: { type: Sequelize.STRING },
       nickName: { type: Sequelize.STRING },
+      name: { type: Sequelize.STRING },
       password: { type: Sequelize.STRING },
       privilege: { type: Sequelize.TINYINT },
       gender: { type: Sequelize.TINYINT },
