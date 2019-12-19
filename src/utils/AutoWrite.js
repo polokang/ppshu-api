@@ -14,5 +14,8 @@ module.exports = {
   },
   AutoWritedMessageModel(target) {
     target.model = require("../models/messageModel")
+  },
+  AutoWritedAssociationModel(target) {
+    target.model = require("../models/associationModel")
   }
 }
