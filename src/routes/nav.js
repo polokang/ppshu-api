@@ -6,7 +6,8 @@ const {
   updateNavByID,
   updateNavPic,
   create,
-  getNavById
+  getNavById,
+  getAdminMenuData
 } = require("../controllers/nav")
 
 const { uploadImage } = require("../utils/upload")
@@ -18,4 +19,6 @@ router.put("/update", updateNavByID)
 
 router.put("/:id/navPicture", uploadImage("id", "filepath"), updateNavPic)
 router.post("/create", create)
+
+router.get("/getAdminMenuData", getAdminMenuData)
 module.exports = router
