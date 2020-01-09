@@ -17,5 +17,8 @@ module.exports = {
   },
   AutoWritedAssociationModel(target) {
     target.model = require("../models/associationModel")
+  },
+  AutoWritedBusiModel(target) {
+    target.model = require("../models/busiModel")
   }
 }

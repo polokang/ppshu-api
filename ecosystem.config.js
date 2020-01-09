@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "pps",
+      name: "api",
       script: "src/app.js",
       instances: "1",
       log_date_format: "YYYY-MM-DD HH:mm:ss",

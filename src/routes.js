@@ -8,6 +8,7 @@ const articleRoute = require("./routes/article")
 const advRoute = require("./routes/adv")
 const messageRoute = require("./routes/message")
 const associationRoute = require("./routes/associationRoute")
+const busiRoute = require("./routes/busiRoute")
 
 const router = express.Router()
 
@@ -27,5 +28,6 @@ router.use("/adv", advRoute)
 router.use("/uploadImage", singleMiddle, uploadImage2OSS)
 router.use("/message", messageRoute)
 router.use("/association", associationRoute)
+router.use("/busi", busiRoute) //商户信息
 
 module.exports = router
